@@ -3,11 +3,23 @@ package com.moutamid.onlinestore.seller_side;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.snackbar.Snackbar;
 import com.moutamid.onlinestore.R;
@@ -37,9 +49,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         });
 
         binding.image.setOnClickListener(v -> {
-            ImagePicker.with(this).cropSquare().compress(1024)
-                    .maxResultSize(1080, 1080)
-                    .start(IMAGE_CODE);
+            showDialog();
         });
 
 
@@ -73,13 +83,64 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
     }
 
+    private void showDialog() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.bs_get_image);
+
+        Button openCamera = dialog.findViewById(R.id.btnOpenCamera);
+        Button openGallery = dialog.findViewById(R.id.btnOpenGallery);
+        Button cancel = dialog.findViewById(R.id.btnCancel);
+
+        cancel.setOnClickListener(v -> {
+            dialog.cancel();
+        });
+
+        openGallery.setOnClickListener(v -> {
+            getImageFromGallery();
+            dialog.cancel();
+        });
+
+        openCamera.setOnClickListener(v -> {
+            getImageFromCamera();
+            dialog.cancel();
+        });
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.BottomSheetAnim;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+    }
+
+    private void getImageFromCamera() {
+        ImagePicker.with(this)
+                .cameraOnly()
+                .cropSquare()
+                .compress(512)
+                .maxResultSize(1080, 1080)
+                .start(IMAGE_CODE);
+        Constants.showDialog();
+    }
+
+    private void getImageFromGallery() {
+        ImagePicker.with(this)
+                .galleryOnly()
+                .cropSquare()
+                .compress(512)
+                .maxResultSize(1080, 1080)
+                .start(IMAGE_CODE);
+        Constants.showDialog();
+    }
+
     private void updateProfile(String imageLink) {
         UserModel userModel = new UserModel(
-          Constants.auth().getCurrentUser().getUid(),
+                Constants.auth().getCurrentUser().getUid(),
                 binding.username.getText().toString(), email, password,
                 binding.phone.getText().toString(),
                 binding.address.getText().toString(), imageLink, true
         );
+
         Constants.databaseReference().child(Constants.User).child(Constants.auth().getCurrentUser().getUid()).setValue(userModel)
                 .addOnSuccessListener(unused -> {
                     Constants.dismissDialog();
@@ -111,7 +172,20 @@ public class UpdateProfileActivity extends AppCompatActivity {
         if (requestCode == IMAGE_CODE) {
             if (resultCode == RESULT_OK && data != null) {
                 image = data.getData();
-                Glide.with(UpdateProfileActivity.this).load(image).placeholder(R.drawable.profile_icon).into(binding.profile);
+                Glide.with(UpdateProfileActivity.this).load(image).addListener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        Constants.dismissDialog();
+                        Snackbar.make(UpdateProfileActivity.this, binding.root, "Something went wrong", Snackbar.LENGTH_SHORT).show();
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        Constants.dismissDialog();
+                        return false;
+                    }
+                }).placeholder(R.drawable.profile_icon).into(binding.profile);
             }
         }
     }
