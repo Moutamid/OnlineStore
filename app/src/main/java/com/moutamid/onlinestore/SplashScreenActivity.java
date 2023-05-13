@@ -20,7 +20,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         if (Constants.auth().getCurrentUser() != null) {
-            checkUser();
+             checkUser();
         } else {
             new Handler().postDelayed(() -> {
                 startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
@@ -43,6 +43,8 @@ public class SplashScreenActivity extends AppCompatActivity {
                             startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
                             finish();
                         }
+                    } else {
+                        Toast.makeText(this, "Data Not Exist", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(e -> {
                     Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();

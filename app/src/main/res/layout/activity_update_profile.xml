@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/root"
+    tools:context=".seller_side.UpdateProfileActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:strokeWidth="0sp"
+        app:cardCornerRadius="0sp"
+        app:cardElevation="6sp"
+        app:cardBackgroundColor="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="12sp">
+
+            <include layout="@layout/header_back" android:id="@+id/header" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile"
+                android:layout_width="150sp"
+                android:layout_height="150sp"
+                android:layout_marginTop="15sp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/profile_icon"
+                app:civ_border_color="@color/darkTr"
+                app:civ_border_width="1sp" />
+
+            <Button
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12sp"
+                android:text="Choose Profile Image"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins"
+                android:text="Username"
+                android:layout_marginTop="12sp"
+                android:layout_marginStart="12sp"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins"
+                android:hint="Username"
+                android:textColorHint="@color/white"
+                android:gravity="top"
+                android:padding="12sp"
+                android:background="@drawable/et_bg"
+                android:layout_margin="12sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins"
+                android:text="Address"
+                android:layout_marginStart="12sp"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins"
+                android:hint="Address"
+                android:textColorHint="@color/white"
+                android:gravity="top"
+                android:padding="12sp"
+                android:background="@drawable/et_bg"
+                android:layout_margin="12sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins"
+                android:text="Phone Number"
+                android:layout_marginStart="12sp"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins"
+                android:gravity="top"
+                android:hint="123456789"
+                android:textColorHint="@color/white"
+                android:padding="12sp"
+                android:background="@drawable/et_bg"
+                android:layout_margin="12sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins"
+                android:text="Email"
+                android:layout_marginStart="12sp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins"
+                android:text="example@gmail.com"
+                android:gravity="top"
+                android:padding="12sp"
+                android:background="@drawable/et_bg"
+                android:layout_margin="12sp"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12sp"
+                android:text="Update Profile"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

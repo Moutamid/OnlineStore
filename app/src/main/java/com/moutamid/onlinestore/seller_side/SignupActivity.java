@@ -46,7 +46,7 @@ public class SignupActivity extends AppCompatActivity {
                         binding.email.getEditText().getText().toString().trim(),
                         binding.password.getEditText().getText().toString()
                 ).addOnSuccessListener(authResult -> {
-                    String ID = UUID.randomUUID().toString();
+                    String ID = Constants.auth().getCurrentUser().getUid();
                     UserModel userModel = new UserModel(
                             ID, binding.username.getEditText().getText().toString(),
                             binding.email.getEditText().getText().toString(),

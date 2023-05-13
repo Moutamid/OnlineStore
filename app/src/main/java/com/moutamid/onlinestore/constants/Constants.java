@@ -10,6 +10,7 @@ import com.moutamid.onlinestore.R;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.view.Window;
@@ -119,5 +120,11 @@ public class Constants {
         StorageReference sr = FirebaseStorage.getInstance().getReference().child("onlineStore").child(auth);
         return sr;
     }
+
+//    private void getImageFromGallery() {
+//        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+//        startActivityForResult(Intent.createChooser(intent, ""), PICK_FROM_GALLERY);
+//    }
 
 }
