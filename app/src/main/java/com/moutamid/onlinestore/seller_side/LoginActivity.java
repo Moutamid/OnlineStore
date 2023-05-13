@@ -25,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Constants.initDialog(this);
+
         binding.header.title.setText("Login to your account");
 
         binding.header.back.setOnClickListener(v -> {
@@ -54,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                 }).addOnFailureListener(e -> {
                     Constants.dismissDialog();
-                    Snackbar.make(this, binding.root, "Something went wrong", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(this, binding.root, e.getMessage(), Snackbar.LENGTH_SHORT).show();
                 });
             }
         });

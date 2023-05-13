@@ -7,6 +7,8 @@
     <color name="dd_orange">#EE4D2D</color>
     <color name="d_orange">#FC5B31</color>
     <color name="dark">#1E3050</color>
+    <color name="darkTr">#BE43649E</color>
+    <color name="darkBlack">#393939</color>
     <color name="grey">#C0C3C5</color>
     <color name="back">#EAEAEA</color>
 </resources>

@@ -1,9 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark"
+    android:orientation="vertical"
     tools:context=".seller_side.SellerDashboardActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15sp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile"
+            android:layout_width="62sp"
+            android:layout_height="62sp"
+            android:layout_margin="12sp"
+            android:src="@drawable/profile_icon" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toRightOf="@id/profile"
+            android:layout_marginTop="12sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins"
+                android:text="Hello 👋," />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins"
+                android:text="Suleman Ijaz" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/newProduct"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="26sp"
+            android:layout_margin="12sp"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/white"
+            app:strokeWidth="1sp"
+            app:strokeColor="@color/white"
+            app:cardElevation="0sp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/dark"
+                android:padding="12sp"
+                android:text="Add Product"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:textSize="18sp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/inventory"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="26sp"
+            android:layout_margin="12sp"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/dark"
+            app:strokeWidth="1sp"
+            app:strokeColor="@color/white"
+            app:cardElevation="0sp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:padding="12sp"
+                android:text="Inventory"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:textSize="18sp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="26sp"
+            android:layout_margin="12sp"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/darkTr"
+            app:strokeWidth="1sp"
+            app:strokeColor="@color/darkTr"
+            app:cardElevation="0sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="12sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey"
+                    android:text="Products Listed"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/listedCount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="25"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="26sp"
+            android:layout_margin="12sp"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/darkTr"
+            app:strokeWidth="1sp"
+            app:strokeColor="@color/darkTr"
+            app:cardElevation="0sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="12sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey"
+                    android:text="Total Sold"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/soldCount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="25"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        android:layout_marginTop="5sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Orders"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="20sp"
+            android:fontFamily="@font/poppins"
+            android:textSize="18sp" />
+
+        <Button
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/round_arrow_forward_24"
+            android:drawableTint="@color/black"
+            android:text="View All"
+            android:layout_marginEnd="12sp"
+            android:layout_marginTop="12sp"
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
+
+</LinearLayout>

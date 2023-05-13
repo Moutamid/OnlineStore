@@ -8,7 +8,9 @@ import android.os.Handler;
 import android.widget.Toast;
 
 import com.moutamid.onlinestore.constants.Constants;
+import com.moutamid.onlinestore.models.UserModel;
 import com.moutamid.onlinestore.seller_side.LoginActivity;
+import com.moutamid.onlinestore.seller_side.SellerDashboardActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -30,6 +32,20 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void checkUser() {
-        Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
+        Constants.databaseReference().child(Constants.User).child(Constants.auth().getCurrentUser().getUid())
+                .get().addOnSuccessListener(dataSnapshot -> {
+                    if (dataSnapshot.exists()) {
+                        UserModel userModel = dataSnapshot.getValue(UserModel.class);
+                        if (userModel.isSeller()){
+                            startActivity(new Intent(SplashScreenActivity.this, SellerDashboardActivity.class));
+                            finish();
+                        } else {
+                            startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                            finish();
+                        }
+                    }
+                }).addOnFailureListener(e -> {
+                    Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
     }
 }

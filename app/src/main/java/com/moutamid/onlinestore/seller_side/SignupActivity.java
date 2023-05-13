@@ -52,7 +52,7 @@ public class SignupActivity extends AppCompatActivity {
                             binding.email.getEditText().getText().toString(),
                             binding.password.getEditText().getText().toString(),
                             (binding.ccp.getSelectedCountryCode() + binding.phone.getEditText().getText().toString()),
-                            binding.address.getEditText().getText().toString(), true
+                            binding.address.getEditText().getText().toString(), "", true
                     );
 
                     Constants.databaseReference().child(Constants.User).child(ID).setValue(userModel)

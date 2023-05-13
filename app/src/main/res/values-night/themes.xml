@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.OnlineStore" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <item name="colorPrimary">@color/orange</item>
-        <item name="colorPrimaryVariant">@color/orange</item>
+        <item name="colorPrimary">@color/dark</item>
+        <item name="colorPrimaryVariant">@color/dark</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/orange</item>
-        <item name="colorSecondaryVariant">@color/orange</item>
+        <item name="colorSecondary">@color/dark</item>
+        <item name="colorSecondaryVariant">@color/dark</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimary</item>

@@ -1,19 +1,20 @@
 package com.moutamid.onlinestore.models;
 
 public class UserModel {
-    String ID, name, email, password, phoneNumber, address;
+    String ID, name, email, password, phoneNumber, address, image;
     boolean isSeller;
 
     public UserModel() {
     }
 
-    public UserModel(String ID, String name, String email, String password, String phoneNumber, String address, boolean isSeller) {
+    public UserModel(String ID, String name, String email, String password, String phoneNumber, String address, String image, boolean isSeller) {
         this.ID = ID;
         this.name = name;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.address = address;
+        this.image = image;
         this.isSeller = isSeller;
     }
 
@@ -71,5 +72,13 @@ public class UserModel {
 
     public void setSeller(boolean seller) {
         isSeller = seller;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
