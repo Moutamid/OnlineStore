@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">OnlineStore</string>
+
+    <string-array name="categories">
+
+        <item>Computer Hardware/Laptop</item>
+        <item>Camera/TVs/Printers</item>
+        <item>Electronic</item>
+        <item>Car/Bike Hardware</item>
+
+    </string-array>
+
 </resources>

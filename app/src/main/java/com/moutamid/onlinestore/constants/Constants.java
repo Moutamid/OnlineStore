@@ -31,6 +31,8 @@ public class Constants {
     static Dialog dialog;
 
     public static final String User = "users";
+    public static final String ProductImages = "product_images";
+    public static final String Product = "product";
 
     public static void initDialog(Context context){
         dialog = new Dialog(context);
@@ -120,11 +122,5 @@ public class Constants {
         StorageReference sr = FirebaseStorage.getInstance().getReference().child("onlineStore").child(auth);
         return sr;
     }
-
-//    private void getImageFromGallery() {
-//        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-//        startActivityForResult(Intent.createChooser(intent, ""), PICK_FROM_GALLERY);
-//    }
 
 }

@@ -11,4 +11,5 @@
     <color name="darkBlack">#393939</color>
     <color name="grey">#C0C3C5</color>
     <color name="back">#EAEAEA</color>
+    <color name="chip_text">#1e1e1e</color>
 </resources>

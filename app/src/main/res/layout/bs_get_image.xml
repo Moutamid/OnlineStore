@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bottom_sheet_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:layout_weight="1"
+            android:textColor="@color/chip_text"
+            android:text="Upload Photos" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/chip_text"
+            android:id="@+id/btnCancel"
+            android:textAllCaps="false"
+            android:text="Cancel" />
+    </LinearLayout>
+    <View
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey" />
+
+    <Button
+        android:id="@+id/btnOpenCamera"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/ic_camera"
+        android:drawablePadding="8dp"
+        android:textAllCaps="false"
+        android:text="Take photos with camera"
+        android:textAlignment="textStart"
+        android:textColor="@color/chip_text"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/view4"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:background="@color/grey" />
+
+    <Button
+        android:id="@+id/btnOpenGallery"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textAllCaps="false"
+        android:drawableLeft="@drawable/round_image_24"
+        android:drawablePadding="8dp"
+        android:text="Upload photos from gallery"
+        android:textAlignment="textStart"
+        android:textColor="@color/chip_text"
+        android:textSize="14sp" />
+
+</LinearLayout>

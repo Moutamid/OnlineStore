@@ -27,6 +27,11 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
+    <style name="BottomSheetAnim">
+        <item name="android:windowEnterAnimation">@animator/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@animator/slide_out_bottom</item>
+    </style>
+
     <style name="Orange" parent="Orange.Theme.OnlineStore" />
     <style name="Theme.OnlineStore" parent="Base.Theme.OnlineStore" />
 </resources>
