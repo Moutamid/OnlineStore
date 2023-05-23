@@ -24,7 +24,7 @@
         <item name="colorSecondaryVariant">@color/d_orange</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:statusBarColor">@color/d_orange</item>
     </style>
 
     <style name="BottomSheetAnim">

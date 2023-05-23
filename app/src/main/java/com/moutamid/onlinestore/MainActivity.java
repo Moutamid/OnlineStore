@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.moutamid.onlinestore.buyer_side.BuyerLoginActivity;
 import com.moutamid.onlinestore.constants.Constants;
 import com.moutamid.onlinestore.databinding.ActivityMainBinding;
 import com.moutamid.onlinestore.seller_side.LoginActivity;
@@ -20,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
 
         binding.seller.setOnClickListener(v -> {
             startActivity(new Intent(this, LoginActivity.class));
+            finish();
+        });
+
+        binding.buyer.setOnClickListener(v -> {
+            startActivity(new Intent(this, BuyerLoginActivity.class));
             finish();
         });
 

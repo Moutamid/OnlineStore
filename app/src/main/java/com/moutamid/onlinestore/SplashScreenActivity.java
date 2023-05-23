@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
 
+import com.moutamid.onlinestore.buyer_side.BuyerLoginActivity;
+import com.moutamid.onlinestore.buyer_side.BuyerMainActivity;
 import com.moutamid.onlinestore.constants.Constants;
 import com.moutamid.onlinestore.models.UserModel;
 import com.moutamid.onlinestore.seller_side.LoginActivity;
@@ -40,7 +42,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                             startActivity(new Intent(SplashScreenActivity.this, SellerDashboardActivity.class));
                             finish();
                         } else {
-                            startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                            startActivity(new Intent(SplashScreenActivity.this, BuyerMainActivity.class));
                             finish();
                         }
                     } else {
