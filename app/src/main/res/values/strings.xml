@@ -6,7 +6,7 @@
         <item>Electronic</item>
         <item>Computer &amp; Accessories</item>
         <item>Mobile &amp; Accessories</item>
-        <item>Men Cloths</item>
+        <item>Men Clothes</item>
         <item>Men Shoes</item>
         <item>Men Bags</item>
         <item>Fashion Accessories</item>
@@ -15,7 +15,7 @@
         <item>Hobby &amp; Collection</item>
         <item>Beauty &amp; Care</item>
         <item>Home &amp; Living</item>
-        <item>Women Cloths</item>
+        <item>Women Clothes</item>
         <item>Women Shoes</item>
         <item>Women Bags</item>
         <item>Baby &amp; Kids Fashion</item>
@@ -25,5 +25,7 @@
         <item>Camera &amp; Photography</item>
 
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

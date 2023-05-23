@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350sp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8sp"
+    app:cardElevation="0sp"
+    android:layout_margin="12sp"
+    app:strokeWidth="0sp"
+    android:theme="@style/Orange"
+    app:cardBackgroundColor="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_margin="8sp"
+            app:cardCornerRadius="8sp"
+            app:cardElevation="0sp">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:background="@color/back"
+                android:layout_height="150sp" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10sp"
+                    android:fontFamily="@font/poppins"
+                    android:text="name"
+                    android:layout_marginEnd="12sp"
+                    android:layout_weight="1"
+                    android:textSize="22sp"
+                    android:textColor="@color/dark" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10sp"
+                    android:fontFamily="@font/poppins"
+                    android:text="$12.00"
+                    android:textSize="22sp"
+                    android:gravity="end"
+                    android:textColor="@color/d_orange" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/cat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10sp"
+                    android:fontFamily="@font/poppins"
+                    android:text="name"
+                    android:layout_marginEnd="12sp"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark" />
+
+                <TextView
+                    android:id="@+id/qt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="10sp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Qt# 45"
+                    android:textSize="16sp"
+                    android:gravity="end"
+                    android:textColor="@color/dark" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="12sp"
+            android:layout_marginEnd="12sp"
+            android:layout_marginBottom="12sp"
+            android:background="@drawable/round_bg"
+            android:foregroundGravity="center"
+            android:padding="12sp"
+            android:src="@drawable/round_favorite_border_24" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_below="@id/layout"
+            android:layout_margin="8sp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10sp"
+                android:fontFamily="@font/poppins"
+                android:text="Add to cart"
+                android:layout_marginEnd="12sp"
+                android:layout_weight="1"
+                android:textSize="22sp"
+                android:textColor="@color/white" />
+
+            <ImageButton
+                android:id="@+id/view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10sp"
+                android:layout_marginEnd="12sp"
+                android:backgroundTint="@color/back"
+                android:background="@drawable/round_bg"
+                android:src="@drawable/round_eye"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>
