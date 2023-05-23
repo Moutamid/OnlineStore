@@ -34,6 +34,7 @@ public class Constants {
     public static final String User = "users";
     public static final String ProductImages = "product_images";
     public static final String Product = "product";
+    public static final String favrt = "favrt";
     public static final String DATEFORMATE = "dd/MM/yyyy";
 
     public static String getFormatedDate(long date){
