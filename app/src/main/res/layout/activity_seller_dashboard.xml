@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/dark"
     android:orientation="vertical"
-    tools:context=".seller_side.SellerDashboardActivity">
+    tools:context=".activities.seller_side.SellerDashboardActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

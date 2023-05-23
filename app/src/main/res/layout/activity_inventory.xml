@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:id="@+id/root"
     android:background="@color/back"
-    tools:context=".seller_side.InventoryActivity">
+    tools:context=".activities.seller_side.InventoryActivity">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"

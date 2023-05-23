@@ -1,4 +1,4 @@
-package com.moutamid.onlinestore.seller_side;
+package com.moutamid.onlinestore.activities.seller_side;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.snackbar.Snackbar;
 import com.moutamid.onlinestore.R;
-import com.moutamid.onlinestore.adapter.CarImageAdapter;
+import com.moutamid.onlinestore.adapter.AddImageAdapter;
 import com.moutamid.onlinestore.constants.Constants;
 import com.moutamid.onlinestore.databinding.ActivityAddProductBinding;
 import com.moutamid.onlinestore.models.ProductModel;
@@ -237,7 +237,7 @@ public class AddProductActivity extends AppCompatActivity {
                             currentImage++;
                         }
 
-                        CarImageAdapter adapter = new CarImageAdapter(AddProductActivity.this, carImagesList, binding.addImage, binding.AddPhotoLayoutRecycler);
+                        AddImageAdapter adapter = new AddImageAdapter(AddProductActivity.this, carImagesList, binding.addImage, binding.AddPhotoLayoutRecycler);
                         binding.RecyclerViewImageList.setAdapter(adapter);
 
                     } else {
@@ -254,7 +254,7 @@ public class AddProductActivity extends AppCompatActivity {
                     //CarImagesModel model = new CarImagesModel(data.getData());
                     carImagesList.add(data.getData());
 
-                    CarImageAdapter adapter = new CarImageAdapter(AddProductActivity.this, carImagesList, binding.addImage, binding.AddPhotoLayoutRecycler);
+                    AddImageAdapter adapter = new AddImageAdapter(AddProductActivity.this, carImagesList, binding.addImage, binding.AddPhotoLayoutRecycler);
                     binding.RecyclerViewImageList.setAdapter(adapter);
                 }
             }

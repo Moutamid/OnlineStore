@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/white"
     android:id="@+id/root"
-    tools:context=".seller_side.ProfileActivity">
+    tools:context=".activities.seller_side.ProfileActivity">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -133,6 +133,17 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="12sp"
                 android:text="Update Profile"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12sp"
+                android:layout_marginEnd="12sp"
+                android:layout_marginBottom="12sp"
+                android:backgroundTint="@color/orange"
+                android:text="Logout"
                 android:textSize="18sp" />
 
         </LinearLayout>

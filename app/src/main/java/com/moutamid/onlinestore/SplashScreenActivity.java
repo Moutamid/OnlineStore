@@ -7,12 +7,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
 
-import com.moutamid.onlinestore.buyer_side.BuyerLoginActivity;
-import com.moutamid.onlinestore.buyer_side.BuyerMainActivity;
+import com.moutamid.onlinestore.activities.buyer_side.BuyerMainActivity;
 import com.moutamid.onlinestore.constants.Constants;
 import com.moutamid.onlinestore.models.UserModel;
-import com.moutamid.onlinestore.seller_side.LoginActivity;
-import com.moutamid.onlinestore.seller_side.SellerDashboardActivity;
+import com.moutamid.onlinestore.activities.seller_side.SellerDashboardActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
 

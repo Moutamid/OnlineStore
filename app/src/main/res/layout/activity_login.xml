@@ -7,7 +7,7 @@
     android:id="@+id/root"
     android:orientation="vertical"
     android:padding="12sp"
-    tools:context=".seller_side.LoginActivity">
+    tools:context=".activities.seller_side.LoginActivity">
 
     <include layout="@layout/header_back" android:id="@+id/header" />
 

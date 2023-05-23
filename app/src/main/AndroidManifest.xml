@@ -13,37 +13,40 @@
         android:theme="@style/Theme.OnlineStore"
         tools:targetApi="31">
         <activity
-            android:name=".buyer_side.BuyerMainActivity"
+            android:theme="@style/Orange.Theme.OnlineStore"
+            android:name=".activities.buyer_side.BuyerMainActivity"
             android:exported="false" />
         <activity
-            android:name=".buyer_side.SignupBuyerActivity"
+            android:theme="@style/Orange.Theme.OnlineStore"
+            android:name=".activities.buyer_side.SignupBuyerActivity"
             android:exported="false" />
         <activity
-            android:name=".buyer_side.BuyerLoginActivity"
+            android:theme="@style/Orange.Theme.OnlineStore"
+            android:name=".activities.buyer_side.BuyerLoginActivity"
             android:exported="false" />
         <activity
-            android:name=".seller_side.UpdateProfileActivity"
+            android:name=".activities.seller_side.UpdateProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".seller_side.ProfileActivity"
+            android:name=".activities.seller_side.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".seller_side.InventoryActivity"
+            android:name=".activities.seller_side.InventoryActivity"
             android:exported="false" />
         <activity
-            android:name=".seller_side.AddProductActivity"
+            android:name=".activities.seller_side.AddProductActivity"
             android:exported="false" />
         <activity
-            android:name=".seller_side.SellerDashboardActivity"
+            android:name=".activities.seller_side.SellerDashboardActivity"
             android:exported="false" />
         <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".seller_side.SignupActivity"
+            android:name=".activities.seller_side.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".seller_side.LoginActivity"
+            android:name=".activities.seller_side.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreenActivity"

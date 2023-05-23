@@ -25,14 +25,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class Constants {
 
     static Dialog dialog;
-
     public static final String User = "users";
     public static final String ProductImages = "product_images";
     public static final String Product = "product";
+    public static final String DATEFORMATE = "dd/MM/yyyy";
+
+    public static String getFormatedDate(long date){
+        return new SimpleDateFormat(DATEFORMATE, Locale.getDefault()).format(date);
+    }
 
     public static void initDialog(Context context){
         dialog = new Dialog(context);

@@ -1,41 +1,33 @@
-package com.moutamid.onlinestore.seller_side;
+package com.moutamid.onlinestore.activities.buyer_side;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.UserHandle;
-import android.view.View;
-import android.view.Window;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.moutamid.onlinestore.R;
 import com.moutamid.onlinestore.constants.Constants;
-import com.moutamid.onlinestore.databinding.ActivitySignupBinding;
+import com.moutamid.onlinestore.databinding.ActivitySignupBuyerBinding;
 import com.moutamid.onlinestore.models.UserModel;
+import com.moutamid.onlinestore.activities.seller_side.LoginActivity;
 
-import java.util.UUID;
-
-public class SignupActivity extends AppCompatActivity {
-    ActivitySignupBinding binding;
-
+public class SignupBuyerActivity extends AppCompatActivity {
+    ActivitySignupBuyerBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivitySignupBinding.inflate(getLayoutInflater());
+        binding = ActivitySignupBuyerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         Constants.initDialog(this);
 
         binding.login.setOnClickListener(v -> {
-            startActivity(new Intent(this, LoginActivity.class));
+            startActivity(new Intent(this, BuyerLoginActivity.class));
             finish();
         });
 
         binding.header.back.setOnClickListener(v -> {
-            startActivity(new Intent(this, LoginActivity.class));
+            startActivity(new Intent(this, BuyerLoginActivity.class));
             finish();
         });
 
@@ -52,7 +44,7 @@ public class SignupActivity extends AppCompatActivity {
                             binding.email.getEditText().getText().toString(),
                             binding.password.getEditText().getText().toString(),
                             (binding.ccp.getSelectedCountryCode() + binding.phone.getEditText().getText().toString()),
-                            binding.address.getEditText().getText().toString(), "", true
+                            binding.address.getEditText().getText().toString(), "", false
                     );
 
                     Constants.databaseReference().child(Constants.User).child(ID).setValue(userModel)
@@ -60,7 +52,7 @@ public class SignupActivity extends AppCompatActivity {
                                 Constants.dismissDialog();
                                 Snackbar.make(this, binding.root, "User created Successfully", Snackbar.LENGTH_INDEFINITE).setAction(
                                         "Login Now", v1 -> {
-                                            startActivity(new Intent(this, LoginActivity.class));
+                                            startActivity(new Intent(this, BuyerLoginActivity.class));
                                             finish();
                                         }
                                 ).show();
@@ -115,4 +107,5 @@ public class SignupActivity extends AppCompatActivity {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
+
 }

@@ -1,4 +1,4 @@
-package com.moutamid.onlinestore.seller_side;
+package com.moutamid.onlinestore.activities.seller_side;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,8 @@ import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.snackbar.Snackbar;
-import com.moutamid.onlinestore.MainActivity;
 import com.moutamid.onlinestore.R;
+import com.moutamid.onlinestore.SplashScreenActivity;
 import com.moutamid.onlinestore.constants.Constants;
 import com.moutamid.onlinestore.databinding.ActivityProfileBinding;
 import com.moutamid.onlinestore.models.UserModel;
@@ -48,6 +48,12 @@ public class ProfileActivity extends AppCompatActivity {
 
         binding.update.setOnClickListener(v -> {
             startActivity(new Intent(this, UpdateProfileActivity.class));
+            finish();
+        });
+
+        binding.logout.setOnClickListener(v -> {
+            Constants.auth().signOut();
+            startActivity(new Intent(this, SplashScreenActivity.class));
             finish();
         });
 

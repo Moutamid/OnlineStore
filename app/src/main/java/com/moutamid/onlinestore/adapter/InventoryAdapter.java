@@ -5,12 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.moutamid.onlinestore.R;
+import com.moutamid.onlinestore.constants.Constants;
 import com.moutamid.onlinestore.models.ProductModel;
 
 import java.util.ArrayList;
@@ -35,6 +37,13 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.Inve
     public void onBindViewHolder(@NonNull InventoryVH holder, int position) {
         ProductModel model = list.get(holder.getAbsoluteAdapterPosition());
         Glide.with(context).load(model.getThumbnail()).into(holder.image);
+
+        holder.name.setText(model.getName());
+        holder.price.setText("$"+model.getPrice());
+        holder.stock.setText(""+model.getStock());
+        holder.catg.setText(model.getCategory());
+        holder.date.setText(Constants.getFormatedDate(model.getTimeStamp()));
+
     }
 
     @Override
@@ -44,9 +53,15 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.Inve
 
     public class InventoryVH extends RecyclerView.ViewHolder{
         ImageView image;
+        TextView name, price, stock, date, catg;
         public InventoryVH(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.image);
+            name = itemView.findViewById(R.id.name);
+            price = itemView.findViewById(R.id.price);
+            date = itemView.findViewById(R.id.date);
+            stock = itemView.findViewById(R.id.stock);
+            catg = itemView.findViewById(R.id.category);
         }
     }
 

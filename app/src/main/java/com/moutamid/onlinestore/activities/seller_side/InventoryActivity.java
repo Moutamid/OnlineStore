@@ -1,4 +1,4 @@
-package com.moutamid.onlinestore.seller_side;
+package com.moutamid.onlinestore.activities.seller_side;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,13 +6,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-import com.moutamid.onlinestore.R;
 import com.moutamid.onlinestore.adapter.InventoryAdapter;
 import com.moutamid.onlinestore.constants.Constants;
 import com.moutamid.onlinestore.databinding.ActivityInventoryBinding;

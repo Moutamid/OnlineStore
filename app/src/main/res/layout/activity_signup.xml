@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/root"
-    tools:context=".seller_side.SignupActivity">
+    tools:context=".activities.seller_side.SignupActivity">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

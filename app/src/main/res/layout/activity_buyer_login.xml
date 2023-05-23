@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="12sp"
     android:theme="@style/Orange"
-    tools:context=".buyer_side.BuyerLoginActivity">
+    tools:context=".activities.buyer_side.BuyerLoginActivity">
 
     <include layout="@layout/header_back" android:id="@+id/header" />
 

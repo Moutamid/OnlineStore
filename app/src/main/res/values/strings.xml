@@ -3,10 +3,26 @@
 
     <string-array name="categories">
 
-        <item>Computer Hardware/Laptop</item>
-        <item>Camera/TVs/Printers</item>
         <item>Electronic</item>
-        <item>Car/Bike Hardware</item>
+        <item>Computer &amp; Accessories</item>
+        <item>Mobile &amp; Accessories</item>
+        <item>Men Cloths</item>
+        <item>Men Shoes</item>
+        <item>Men Bags</item>
+        <item>Fashion Accessories</item>
+        <item>Watches</item>
+        <item>Health</item>
+        <item>Hobby &amp; Collection</item>
+        <item>Beauty &amp; Care</item>
+        <item>Home &amp; Living</item>
+        <item>Women Cloths</item>
+        <item>Women Shoes</item>
+        <item>Women Bags</item>
+        <item>Baby &amp; Kids Fashion</item>
+        <item>Baby &amp; Mom</item>
+        <item>Automotive</item>
+        <item>Sports &amp; Outdoor</item>
+        <item>Camera &amp; Photography</item>
 
     </string-array>
 

@@ -21,35 +21,35 @@ import com.moutamid.onlinestore.R;
 
 import java.util.ArrayList;
 
-public class CarImageAdapter extends RecyclerView.Adapter<CarImageAdapter.CarImageViewHolder>  {
+public class AddImageAdapter extends RecyclerView.Adapter<AddImageAdapter.ImageViewHolder>  {
     Context context;
-    ArrayList<Uri> carImagesList;
+    ArrayList<Uri> ImagesList;
     LinearLayout addPhotoLayout, addPhotoLayoutRecycler;
 
     private final int limit = 6;
 
-    public CarImageAdapter(Context context, ArrayList<Uri> carImagesList) {
+    public AddImageAdapter(Context context, ArrayList<Uri> ImagesList) {
         this.context = context;
-        this.carImagesList = carImagesList;
+        this.ImagesList = ImagesList;
     }
 
-    public CarImageAdapter(Context context, ArrayList<Uri> carImagesList, LinearLayout addPhotoLayout, LinearLayout addPhotoLayoutRecycler) {
+    public AddImageAdapter(Context context, ArrayList<Uri> ImagesList, LinearLayout addPhotoLayout, LinearLayout addPhotoLayoutRecycler) {
         this.context = context;
-        this.carImagesList = carImagesList;
+        this.ImagesList = ImagesList;
         this.addPhotoLayout = addPhotoLayout;
         this.addPhotoLayoutRecycler = addPhotoLayoutRecycler;
     }
 
     @NonNull
     @Override
-    public CarImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.image_layout, parent, false);
-        return new CarImageViewHolder(view);
+        return new ImageViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CarImageViewHolder holder, int position) {
-        holder.carImageView.setImageURI(carImagesList.get(position));
+    public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
+        holder.imageView.setImageURI(ImagesList.get(position));
         holder.itemView.setOnClickListener(v -> {
 
             final Dialog dialog = new Dialog(context);
@@ -65,17 +65,17 @@ public class CarImageAdapter extends RecyclerView.Adapter<CarImageAdapter.CarIma
 
             removeImg.setOnClickListener(remove -> {
                 try{
-                    if(carImagesList.size() == 1){
-                        carImagesList.remove(position);
+                    if(ImagesList.size() == 1){
+                        ImagesList.remove(position);
                         notifyItemRemoved(position);
                         notifyDataSetChanged();
                         dialog.cancel();
-                        if (carImagesList.isEmpty()) {
+                        if (ImagesList.isEmpty()) {
                             addPhotoLayoutRecycler.setVisibility(View.GONE);
                             addPhotoLayout.setVisibility(View.VISIBLE);
                         }
                     }
-                    carImagesList.remove(position);
+                    ImagesList.remove(position);
                     notifyItemRemoved(position);
                     notifyDataSetChanged();
                     dialog.cancel();
@@ -95,17 +95,17 @@ public class CarImageAdapter extends RecyclerView.Adapter<CarImageAdapter.CarIma
 
     @Override
     public int getItemCount() {
-        if (carImagesList.size() > limit){
+        if (ImagesList.size() > limit){
             return limit;
         }
-        return carImagesList.size();
+        return ImagesList.size();
     }
 
-    public class CarImageViewHolder extends RecyclerView.ViewHolder{
-        ImageView carImageView;
-        public CarImageViewHolder(@NonNull View itemView) {
+    public class ImageViewHolder extends RecyclerView.ViewHolder{
+        ImageView imageView;
+        public ImageViewHolder(@NonNull View itemView) {
             super(itemView);
-            carImageView = itemView.findViewById(R.id.carImageView);
+            imageView = itemView.findViewById(R.id.ImageView);
         }
 
     }

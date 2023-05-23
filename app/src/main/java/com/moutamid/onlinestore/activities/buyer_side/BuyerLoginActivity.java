@@ -1,28 +1,22 @@
-package com.moutamid.onlinestore.seller_side;
+package com.moutamid.onlinestore.activities.buyer_side;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.Window;
-import android.widget.Toast;
 
-import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.moutamid.onlinestore.ForgotPasswordActivity;
 import com.moutamid.onlinestore.MainActivity;
-import com.moutamid.onlinestore.R;
 import com.moutamid.onlinestore.constants.Constants;
-import com.moutamid.onlinestore.databinding.ActivityLoginBinding;
+import com.moutamid.onlinestore.databinding.ActivityBuyerLoginBinding;
 
-public class LoginActivity extends AppCompatActivity {
-    ActivityLoginBinding binding;
+public class BuyerLoginActivity extends AppCompatActivity {
+    ActivityBuyerLoginBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        binding = ActivityBuyerLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         Constants.initDialog(this);
@@ -40,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         binding.create.setOnClickListener(v -> {
-            startActivity(new Intent(this, SignupActivity.class));
+            startActivity(new Intent(this, SignupBuyerActivity.class));
             finish();
         });
 
@@ -52,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                         binding.password.getEditText().getText().toString()
                 ).addOnSuccessListener(authResult -> {
                     Constants.dismissDialog();
-                    startActivity(new Intent(LoginActivity.this, SellerDashboardActivity.class));
+                    startActivity(new Intent(BuyerLoginActivity.this, BuyerMainActivity.class));
                     finish();
                 }).addOnFailureListener(e -> {
                     Constants.dismissDialog();
@@ -80,4 +74,5 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(new Intent(this, MainActivity.class));
         finish();
     }
+
 }

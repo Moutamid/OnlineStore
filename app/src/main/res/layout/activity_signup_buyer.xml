@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:theme="@style/Orange"
     android:id="@+id/root"
-    tools:context=".buyer_side.SignupBuyerActivity">
+    tools:context=".activities.buyer_side.SignupBuyerActivity">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

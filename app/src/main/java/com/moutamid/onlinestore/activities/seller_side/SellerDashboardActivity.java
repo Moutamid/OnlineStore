@@ -1,4 +1,4 @@
-package com.moutamid.onlinestore.seller_side;
+package com.moutamid.onlinestore.activities.seller_side;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
