@@ -41,7 +41,6 @@ public class AddProductActivity extends AppCompatActivity {
     private static final int PICK_FROM_CAMERA = 2;
     private int limit = 6;
     ArrayList<Uri> carImagesList;
-
     ArrayAdapter<CharSequence> citiesAdapter;
 
     @Override
