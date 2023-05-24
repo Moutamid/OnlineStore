@@ -14,17 +14,23 @@
         android:theme="@style/Theme.OnlineStore"
         tools:targetApi="31">
         <activity
-            android:theme="@style/Orange.Theme.OnlineStore"
+            android:name=".activities.buyer_side.ProductDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.buyer_side.AccountSettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.buyer_side.BuyerMainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Orange.Theme.OnlineStore" />
         <activity
-            android:theme="@style/Orange.Theme.OnlineStore"
             android:name=".activities.buyer_side.SignupBuyerActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Orange.Theme.OnlineStore" />
         <activity
-            android:theme="@style/Orange.Theme.OnlineStore"
             android:name=".activities.buyer_side.BuyerLoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Orange.Theme.OnlineStore" />
         <activity
             android:name=".activities.seller_side.UpdateProfileActivity"
             android:exported="false" />

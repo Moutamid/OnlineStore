@@ -2,8 +2,10 @@ package com.moutamid.onlinestore.activities.seller_side;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.snackbar.Snackbar;
@@ -52,9 +54,17 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         binding.logout.setOnClickListener(v -> {
-            Constants.auth().signOut();
-            startActivity(new Intent(this, SplashScreenActivity.class));
-            finish();
+            new AlertDialog.Builder(this).setMessage("Are you sure you want to logout?")
+                    .setTitle("Log out")
+                    .setPositiveButton("Yes", ((dialog, which) -> {
+                        dialog.dismiss();
+                        Constants.showDialog();
+                        new Handler().postDelayed(() -> {
+                            Constants.dismissDialog();
+                            startActivity(new Intent(this, SplashScreenActivity.class));
+                            finish();
+                        }, 1500);
+                    })).setNegativeButton("No", (dialog, which) -> dialog.dismiss()).show();
         });
 
     }

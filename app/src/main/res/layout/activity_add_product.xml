@@ -151,6 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    app:startIconDrawable="@drawable/round_attach_money_24"
                     android:layout_marginEnd="5sp"
                     android:hint="Product Price">
 
@@ -158,7 +159,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/poppins"
-                        android:inputType="number" />
+                        android:inputType="number|numberDecimal" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

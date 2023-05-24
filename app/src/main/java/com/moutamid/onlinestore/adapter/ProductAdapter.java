@@ -1,6 +1,7 @@
 package com.moutamid.onlinestore.adapter;
 
 import android.content.Context;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
 import com.moutamid.onlinestore.R;
 import com.moutamid.onlinestore.constants.Constants;
+import com.moutamid.onlinestore.models.CartModel;
 import com.moutamid.onlinestore.models.CategoryModel;
 import com.moutamid.onlinestore.models.ProductModel;
 
@@ -48,11 +50,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Category
         holder.price.setText("$" + model.getPrice());
 
         ArrayList<ProductModel> bookmarkModels = Stash.getArrayList(Constants.favrt, ProductModel.class);
+        ArrayList<CartModel> carttt = Stash.getArrayList(Constants.CART, CartModel.class);
+
 
         for (ProductModel fvrtModel : bookmarkModels){
             if (fvrtModel.getID().equals(model.getID())){
                 holder.fav.setImageResource(R.drawable.favorite);
                 holder.isFavrt = true;
+            }
+        }
+
+        for (CartModel cartModel : carttt){
+            if (cartModel.getID().equals(model.getID())){
+                holder.isAdded = true;
             }
         }
 
@@ -77,6 +87,23 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Category
             }
         });
 
+        holder.add.setOnClickListener(v -> {
+            Constants.initDialog(context);
+            Constants.showDialog();
+            new Handler().postDelayed(() -> {
+                ArrayList<CartModel> cart = Stash.getArrayList(Constants.CART, CartModel.class);
+                CartModel cartModel = new CartModel(model.getID(), model, 1);
+                if (!holder.isAdded){
+                    cart.add(cartModel);
+                    Stash.put(Constants.CART, cart);
+                    holder.isAdded = true;
+                } else {
+                    Toast.makeText(context, "Already Added into your cart", Toast.LENGTH_SHORT).show();
+                }
+                Constants.dismissDialog();
+            }, 1500);
+        });
+
         holder.itemView.setOnClickListener(v -> {});
 
     }
@@ -91,7 +118,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Category
         TextView name, price, qt, cat;
         Button add;
         ImageButton fav, view;
-        boolean isFavrt;
+        boolean isFavrt, isAdded;
         public CategoryVH(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
@@ -104,6 +131,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Category
             view = itemView.findViewById(R.id.view);
 
             isFavrt = false;
+            isAdded = false;
 
         }
     }

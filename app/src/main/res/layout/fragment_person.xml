@@ -1,14 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/back"
+    android:theme="@style/Orange"
+    android:id="@+id/root"
+    android:orientation="vertical"
     tools:context=".fragments.buyer_fragments.PersonFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:fillViewport="true">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200sp"
+                android:background="@color/d_orange">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile"
+                        android:layout_width="100sp"
+                        android:layout_height="100sp"
+                        android:layout_margin="12sp"
+                        android:src="@drawable/profile_icon"
+                        app:civ_border_color="@color/back"
+                        app:civ_border_width="1sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:text="Suleman"
+                            android:textColor="@color/back"
+                            android:textSize="28sp" />
+
+                        <TextView
+                            android:id="@+id/email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:text="buyer@gmail.com"
+                            android:textColor="@color/back"
+                            android:textSize="20sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/account"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12sp"
+                android:drawableLeft="@drawable/round_settings_24"
+                android:drawablePadding="12sp"
+                android:drawableTint="@color/d_orange"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins"
+                android:textAllCaps="false"
+                android:gravity="start|center"
+                android:padding="12sp"
+                android:text="Account Setting"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:background="@color/grey"
+                android:layout_marginHorizontal="25sp" />
+
+            <Button
+                android:id="@+id/orders"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/round_credit_card_24"
+                android:drawablePadding="12sp"
+                android:drawableTint="@color/d_orange"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins"
+                android:textAllCaps="false"
+                android:gravity="start|center"
+                android:padding="12sp"
+                android:text="My Orders"
+                android:textSize="18sp" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:background="@color/grey"
+                android:layout_marginHorizontal="25sp" />
+
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins"
+                android:textAllCaps="false"
+                android:gravity="center"
+                android:padding="12sp"
+                android:text="Logout"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>
