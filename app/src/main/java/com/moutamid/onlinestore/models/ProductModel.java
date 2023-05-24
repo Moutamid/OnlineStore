@@ -1,11 +1,13 @@
 package com.moutamid.onlinestore.models;
 
+import java.util.ArrayList;
+
 public class ProductModel {
     String ID, userID, name, description, category;
     String thumbnail;
     double price;
     long stock, timeStamp;
-
+    ArrayList<String> imagesList;
     public ProductModel() {
     }
 
@@ -19,6 +21,19 @@ public class ProductModel {
         this.price = price;
         this.stock = stock;
         this.timeStamp = timeStamp;
+    }
+
+    public ProductModel(String ID, String userID, String name, String description, String category, String thumbnail, double price, long stock, long timeStamp, ArrayList<String> imagesList) {
+        this.ID = ID;
+        this.userID = userID;
+        this.name = name;
+        this.description = description;
+        this.category = category;
+        this.thumbnail = thumbnail;
+        this.price = price;
+        this.stock = stock;
+        this.timeStamp = timeStamp;
+        this.imagesList = imagesList;
     }
 
     public String getThumbnail() {
@@ -91,5 +106,13 @@ public class ProductModel {
 
     public void setTimeStamp(long timeStamp) {
         this.timeStamp = timeStamp;
+    }
+
+    public ArrayList<String> getImagesList() {
+        return imagesList;
+    }
+
+    public void setImagesList(ArrayList<String> imagesList) {
+        this.imagesList = imagesList;
     }
 }
