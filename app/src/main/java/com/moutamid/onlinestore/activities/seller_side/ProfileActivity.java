@@ -61,6 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
                         Constants.showDialog();
                         new Handler().postDelayed(() -> {
                             Constants.dismissDialog();
+                            Constants.auth().signOut();
                             startActivity(new Intent(this, SplashScreenActivity.class));
                             finish();
                         }, 1500);
