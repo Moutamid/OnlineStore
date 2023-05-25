@@ -3,29 +3,28 @@
 
     <string-array name="categories">
 
-        <item>Electronic</item>
+        <item>Electronics</item>
         <item>Computer &amp; Accessories</item>
-        <item>Mobile &amp; Accessories</item>
+        <item>Mom &amp; Baby</item>
         <item>Men Clothes</item>
-        <item>Men Shoes</item>
         <item>Men Bags</item>
         <item>Fashion Accessories</item>
-        <item>Watches</item>
         <item>Health</item>
         <item>Hobby &amp; Collection</item>
-        <item>Beauty &amp; Care</item>
-        <item>Home &amp; Living</item>
-        <item>Women Clothes</item>
-        <item>Women Shoes</item>
-        <item>Women Bags</item>
-        <item>Baby &amp; Kids Fashion</item>
-        <item>Baby &amp; Mom</item>
+        <item>Photography</item>
+        <item>Mobile &amp; Accessories</item>
         <item>Automotive</item>
+        <item>Women Bags</item>
+        <item>Watches</item>
+        <item>Women Shoes</item>
+        <item>Baby &amp; Kids Fashion</item>
+        <item>Women Clothes</item>
+        <item>Home &amp; Living</item>
+        <item>Beauty &amp; Care</item>
         <item>Sports &amp; Outdoor</item>
-        <item>Camera &amp; Photography</item>
+        <item>Men Shoes</item>
 
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>
