@@ -38,6 +38,7 @@ public class Constants {
     public static final String CART = "cart";
     public static final String SEARCH = "search";
     public static final String isSEARCH = "isSearch";
+    public static final String isQuery = "isQuery";
     public static final String MODEL = "model";
     public static final String DATEFORMATE = "dd/MM/yyyy";
 

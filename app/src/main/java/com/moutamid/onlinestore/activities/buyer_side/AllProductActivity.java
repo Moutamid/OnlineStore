@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.fxn.stash.Stash;
@@ -33,15 +34,59 @@ public class AllProductActivity extends AppCompatActivity {
         binding.header.title.setText("Products");
 
         binding.header.back.setOnClickListener(v -> {
+            Stash.put(Constants.isQuery, false);
             startActivity(new Intent(this, BuyerMainActivity.class));
             finish();
         });
 
-        if (Stash.getBoolean(Constants.isSEARCH, false)){
-            showCat();
+        if (Stash.getBoolean(Constants.isQuery, false)) {
+            Log.d("dddddd", "enter Search");
+            showSearch();
         } else {
+            if (Stash.getBoolean(Constants.isSEARCH, false)){
+                showCat();
+            } else {
                 showAll();
+            }
         }
+
+    }
+
+    private void showSearch() {
+        String cat = Stash.getString(Constants.SEARCH).toLowerCase();
+        binding.header.title.setText("Search for \"" + cat + "\"");
+        Constants.databaseReference().child(Constants.Product)
+                .get().addOnSuccessListener(dataSnapshot -> {
+                    if (dataSnapshot.exists()) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            for (DataSnapshot ss : snapshot.getChildren()) {
+                                ProductModel productModel = ss.getValue(ProductModel.class);
+                                if (productModel.getCategory().toLowerCase().contains(cat) || productModel.getName().toLowerCase().contains(cat)) {
+                                    productList.add(productModel);
+                                } else {
+                                    Log.d("dddddd", "fdd");
+                                }
+                            }
+                        }
+
+                        if (productList.size() == 0) {
+                            Snackbar.make(AllProductActivity.this, binding.root, "No Product Found", Snackbar.LENGTH_INDEFINITE).show();
+                        } else {
+                            binding.recyler.setVisibility(View.VISIBLE);
+                            binding.loading.setVisibility(View.GONE);
+                        }
+
+                    } else {
+                        Snackbar.make(AllProductActivity.this, binding.root, "No Product Found", Snackbar.LENGTH_INDEFINITE).show();
+                    }
+
+                    Constants.dismissDialog();
+                    SearchProductAdapter adapter = new SearchProductAdapter(AllProductActivity.this, productList);
+                    binding.recyler.setAdapter(adapter);
+                }).addOnFailureListener(e -> {
+                    Constants.dismissDialog();
+                    Snackbar.make(AllProductActivity.this, binding.root, "Something went wrong", Snackbar.LENGTH_SHORT).show();
+                });
     }
 
     private void showCat() {
@@ -53,7 +98,7 @@ public class AllProductActivity extends AppCompatActivity {
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             for (DataSnapshot ss : snapshot.getChildren()) {
                                 ProductModel productModel = ss.getValue(ProductModel.class);
-                                if (cat.equals(productModel.getCategory())) {
+                                if (cat.equalsIgnoreCase(productModel.getCategory())) {
                                     productList.add(productModel);
                                 }
                             }
@@ -105,6 +150,7 @@ public class AllProductActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        Stash.put(Constants.isQuery, false);
         startActivity(new Intent(this, BuyerMainActivity.class));
         finish();
     }

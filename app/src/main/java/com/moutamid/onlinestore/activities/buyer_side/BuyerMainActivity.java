@@ -2,9 +2,12 @@ package com.moutamid.onlinestore.activities.buyer_side;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.fxn.stash.Stash;
 import com.google.android.material.shape.ShapeAppearanceModel;
 import com.moutamid.onlinestore.R;
 import com.moutamid.onlinestore.constants.Constants;
@@ -27,6 +30,18 @@ public class BuyerMainActivity extends AppCompatActivity {
         binding.bottomNav.setItemActiveIndicatorShapeAppearance(new ShapeAppearanceModel().withCornerSize(50).toBuilder().build());
         binding.bottomNav.setItemActiveIndicatorHeight(100);
         binding.bottomNav.setItemActiveIndicatorWidth(100);
+
+        binding.searchBtn.setOnClickListener(v -> {
+            if (binding.search.getText().toString().isEmpty()){
+                Toast.makeText(this, "Search query is empty", Toast.LENGTH_SHORT).show();
+            } else {
+                String ss = binding.search.getText().toString();
+                Stash.put(Constants.SEARCH, ss);
+                Stash.put(Constants.isQuery, true);
+                startActivity(new Intent(this, AllProductActivity.class));
+                finish();
+            }
+        });
 
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new HomeFragment()).commit();
         binding.bottomNav.setSelectedItemId(R.id.nav_home);
