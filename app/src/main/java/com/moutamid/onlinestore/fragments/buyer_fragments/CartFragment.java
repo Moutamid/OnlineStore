@@ -45,7 +45,7 @@ public class CartFragment extends Fragment {
         binding.count.setText("Total# " + cart.size());
 
         for (CartModel cartModel : cart) {
-            price += cartModel.getProductModel().getPrice();
+            price += ( cartModel.getProductModel().getPrice() * cartModel.getCount() );
         }
         binding.price.setText("$" + String.format("%.2f", price));
 
@@ -55,7 +55,7 @@ public class CartFragment extends Fragment {
     CartListner listner = new CartListner() {
         @Override
         public void onDeleteClick(CartModel cartModel, int pos) {
-            ArrayList<CartModel> cart = Stash.getArrayList(Constants.CART, CartModel.class);
+            /*ArrayList<CartModel> cart = Stash.getArrayList(Constants.CART, CartModel.class);
             Log.d("PPP", cart.size()+"");
             cart.remove(cartModel);
             binding.count.setText("Total# " + cart.size());
@@ -66,7 +66,7 @@ public class CartFragment extends Fragment {
             binding.price.setText("$" + String.format("%.2f", pp));
             Stash.put(Constants.CART, cart);
             adapter = new CartAdapter(requireContext(), cart, listner);
-            binding.recyler.setAdapter(adapter);
+            binding.recyler.setAdapter(adapter);*/
         }
     };
 

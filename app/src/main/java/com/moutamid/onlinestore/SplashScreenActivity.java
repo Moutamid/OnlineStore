@@ -36,7 +36,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 .get().addOnSuccessListener(dataSnapshot -> {
                     if (dataSnapshot.exists()) {
                         UserModel userModel = dataSnapshot.getValue(UserModel.class);
-                        if (userModel.isSeller()){
+                        if (userModel.isSeller()) {
                             startActivity(new Intent(SplashScreenActivity.this, SellerDashboardActivity.class));
                             finish();
                         } else {

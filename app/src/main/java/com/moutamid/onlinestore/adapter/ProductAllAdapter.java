@@ -21,17 +21,16 @@ import com.moutamid.onlinestore.R;
 import com.moutamid.onlinestore.activities.buyer_side.ProductDetailActivity;
 import com.moutamid.onlinestore.constants.Constants;
 import com.moutamid.onlinestore.models.CartModel;
-import com.moutamid.onlinestore.models.CategoryModel;
 import com.moutamid.onlinestore.models.ProductModel;
 
 import java.util.ArrayList;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.CategoryVH> {
+public class ProductAllAdapter extends RecyclerView.Adapter<ProductAllAdapter.CategoryVH> {
 
     Context context;
     ArrayList<ProductModel> list;
 
-    public ProductAdapter(Context context, ArrayList<ProductModel> list) {
+    public ProductAllAdapter(Context context, ArrayList<ProductModel> list) {
         this.context = context;
         this.list = list;
     }
@@ -39,7 +38,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Category
     @NonNull
     @Override
     public CategoryVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new CategoryVH(LayoutInflater.from(context).inflate(R.layout.product_layout, parent, false));
+        return new CategoryVH(LayoutInflater.from(context).inflate(R.layout.product_all_layout, parent, false));
     }
 
     @Override

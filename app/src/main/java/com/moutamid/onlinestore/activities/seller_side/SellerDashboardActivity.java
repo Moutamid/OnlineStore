@@ -64,7 +64,7 @@ public class SellerDashboardActivity extends AppCompatActivity {
                         if (snapshot.exists()) {
                             binding.listedCount.setText(""+snapshot.getChildrenCount());
                         } else {
-                            binding.listedCount.setText(0);
+                            binding.listedCount.setText(""+0);
                         }
                         Constants.dismissDialog();
                         getSoldCount();

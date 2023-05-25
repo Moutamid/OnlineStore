@@ -1,8 +1,8 @@
 package com.moutamid.onlinestore.fragments.buyer_fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -10,14 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.fxn.stash.Stash;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
-import com.moutamid.onlinestore.R;
-import com.moutamid.onlinestore.activities.seller_side.InventoryActivity;
+import com.moutamid.onlinestore.activities.buyer_side.AllProductActivity;
 import com.moutamid.onlinestore.adapter.CategoryAdapter;
-import com.moutamid.onlinestore.adapter.InventoryAdapter;
 import com.moutamid.onlinestore.adapter.ProductAdapter;
 import com.moutamid.onlinestore.constants.Constants;
 import com.moutamid.onlinestore.databinding.FragmentHomeBinding;
@@ -25,6 +22,7 @@ import com.moutamid.onlinestore.models.CategoryModel;
 import com.moutamid.onlinestore.models.ProductModel;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class HomeFragment extends Fragment {
     FragmentHomeBinding binding;
@@ -49,6 +47,11 @@ public class HomeFragment extends Fragment {
         binding.recylerProduct.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.HORIZONTAL));
         binding.recylerProduct.setHasFixedSize(false);
 
+        binding.viewAll.setOnClickListener(v -> {
+            Stash.put(Constants.isSEARCH, false);
+            startActivity(new Intent(requireContext(), AllProductActivity.class));
+        });
+
         addCategory();
         getProducts();
 
@@ -57,13 +60,21 @@ public class HomeFragment extends Fragment {
 
     private void getProducts() {
         Constants.showDialog();
+        AtomicInteger i = new AtomicInteger();
+        AtomicInteger j = new AtomicInteger();
         Constants.databaseReference().child(Constants.Product)
                 .get().addOnSuccessListener(dataSnapshot -> {
                     if (dataSnapshot.exists()){
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             for (DataSnapshot ss : snapshot.getChildren()) {
-                                ProductModel productModel = ss.getValue(ProductModel.class);
-                                productList.add(productModel);
+                                if (j.get() < 3){
+                                    ProductModel productModel = ss.getValue(ProductModel.class);
+                                    productList.add(productModel);
+                                }
+                                j.getAndIncrement();
+                            }
+                            if (j.get() >= 3){
+                                j.getAndSet(0);
                             }
                         }
                     }
