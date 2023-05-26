@@ -1,5 +1,6 @@
 package com.moutamid.onlinestore.fragments.buyer_fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.fxn.stash.Stash;
 import com.moutamid.onlinestore.R;
+import com.moutamid.onlinestore.activities.buyer_side.CheckoutActivity;
 import com.moutamid.onlinestore.adapter.CartAdapter;
 import com.moutamid.onlinestore.constants.Constants;
 import com.moutamid.onlinestore.databinding.FragmentCartBinding;
@@ -48,6 +50,12 @@ public class CartFragment extends Fragment {
             price += ( cartModel.getProductModel().getPrice() * cartModel.getCount() );
         }
         binding.price.setText("$" + String.format("%.2f", price));
+
+        binding.checkout.setOnClickListener(v -> {
+            Stash.put(Constants.checkoutPrice, String.format("%.2f", price));
+            startActivity(new Intent(requireContext(), CheckoutActivity.class));
+            requireActivity().finish();
+        });
 
         return binding.getRoot();
     }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Orange"
+    android:orientation="vertical"
+    android:padding="12sp"
+    android:id="@+id/root"
+    tools:context=".activities.buyer_side.MyOrderActivity">
+
+    <include layout="@layout/header_back" android:id="@+id/header" />
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your Previous Orders"
+            android:padding="12sp"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total# 12"
+            android:padding="12sp"
+            android:textSize="20sp"
+            android:gravity="end"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyler"
+        android:layout_marginTop="12sp"
+        android:layout_width="match_parent"
+        tools:listitem="@layout/order_buyer_layout"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

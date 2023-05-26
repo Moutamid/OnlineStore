@@ -16,7 +16,9 @@ import com.google.android.material.snackbar.Snackbar;
 import com.moutamid.onlinestore.R;
 import com.moutamid.onlinestore.SplashScreenActivity;
 import com.moutamid.onlinestore.activities.buyer_side.AccountSettingActivity;
+import com.moutamid.onlinestore.activities.buyer_side.MyOrderActivity;
 import com.moutamid.onlinestore.activities.seller_side.ProfileActivity;
+import com.moutamid.onlinestore.adapter.OrderBuyerAdapter;
 import com.moutamid.onlinestore.constants.Constants;
 import com.moutamid.onlinestore.databinding.FragmentPersonBinding;
 import com.moutamid.onlinestore.models.UserModel;
@@ -50,6 +52,10 @@ public class PersonFragment extends Fragment {
 
         binding.account.setOnClickListener(v -> {
             startActivity(new Intent(requireContext(), AccountSettingActivity.class));
+            requireActivity().finish();
+        });
+        binding.orders.setOnClickListener(v -> {
+            startActivity(new Intent(requireContext(), MyOrderActivity.class));
             requireActivity().finish();
         });
 

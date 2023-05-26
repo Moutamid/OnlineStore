@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark"
+    android:id="@+id/root"
     android:orientation="vertical"
     tools:context=".activities.seller_side.SellerDashboardActivity">
 
@@ -169,13 +170,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/grey"
-                    android:text="Total Sold"
+                    android:text="Total Orders"
                     android:gravity="center"
                     android:fontFamily="@font/poppins"
                     android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/soldCount"
+                    android:id="@+id/ordersCount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
@@ -197,6 +198,7 @@
         android:layout_marginTop="5sp">
 
         <TextView
+            android:id="@+id/order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
@@ -214,16 +216,18 @@
             android:layout_alignParentRight="true"
             android:drawableRight="@drawable/round_arrow_forward_24"
             android:drawableTint="@color/black"
+            android:visibility="gone"
             android:text="View All"
             android:layout_marginEnd="12sp"
             android:layout_marginTop="12sp"
             android:textColor="@color/black" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10sp"
-            android:layout_below="@id/viewAll" />
+            tools:listitem="@layout/order_buyer_layout"
+            android:layout_below="@id/order" />
 
     </RelativeLayout>
 

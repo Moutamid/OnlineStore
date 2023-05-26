@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root"
+    android:theme="@style/Orange"
+    android:background="@color/back"
+    tools:context=".activities.buyer_side.CheckoutActivity">
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/checc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Checkout"
+            android:padding="12sp"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total# 12"
+            android:padding="12sp"
+            android:textSize="20sp"
+            android:visibility="gone"
+            android:gravity="end"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_marginTop="12sp"
+        android:layout_width="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_above="@id/checkoutLay"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12sp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Full Name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/poppins"
+                    android:inputType="textPersonName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/numb"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6sp"
+                android:hint="Mobile Number">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/poppins"
+                    android:inputType="phone" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/address"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:layout_width="match_parent"
+                android:layout_height="100sp"
+                android:layout_marginTop="6sp"
+                android:gravity="top"
+                android:hint="Your complete address">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/poppins"
+                    android:inputType="textMultiLine" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Choose Your Payment Method"
+                android:textSize="16sp"
+                android:layout_marginTop="15sp"
+                android:fontFamily="@font/poppins" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/cod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="\t\tCash on delivery (COD)"
+                    android:textSize="16sp"
+                    app:buttonTint="@color/d_orange"
+                    android:checked="true"
+                    android:fontFamily="@font/poppins" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/inApp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="\t\tIn-App Purchase"
+                    android:textSize="16sp"
+                    app:buttonTint="@color/d_orange"
+                    android:fontFamily="@font/poppins" />
+
+            </RadioGroup>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12sp"
+                app:cardCornerRadius="8sp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="0sp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="12sp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Order Summary"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5sp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Item Total"
+                            android:textSize="16sp"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins" />
+
+                        <TextView
+                            android:id="@+id/total"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="$100"
+                            android:textSize="16sp"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5sp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Delivery Fee"
+                            android:textSize="16sp"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="$5"
+                            android:textSize="16sp"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5sp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Total Payment"
+                            android:textSize="16sp"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins" />
+
+                        <TextView
+                            android:id="@+id/totalPayment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="$105"
+                            android:textSize="16sp"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/checkoutLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12sp"
+        android:gravity="center_vertical"
+        android:background="@drawable/background"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Subtotal"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Your Cart"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buy Now"
+            android:textSize="20sp"
+            android:gravity="end"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

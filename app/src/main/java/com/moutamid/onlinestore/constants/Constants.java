@@ -32,14 +32,17 @@ public class Constants {
 
     static Dialog dialog;
     public static final String User = "users";
+    public static final String buy = "buy";
     public static final String ProductImages = "product_images";
     public static final String Product = "product";
     public static final String favrt = "favrt";
+    public static final String checkoutPrice = "checkoutPrice";
     public static final String CART = "cart";
     public static final String SEARCH = "search";
     public static final String isSEARCH = "isSearch";
     public static final String isQuery = "isQuery";
     public static final String MODEL = "model";
+    public static final String IMAGE_LIST = "list";
     public static final String DATEFORMATE = "dd/MM/yyyy";
 
     public static String getFormatedDate(long date){
