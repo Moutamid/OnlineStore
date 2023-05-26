@@ -63,7 +63,24 @@ public class CartFragment extends Fragment {
     CartListner listner = new CartListner() {
         @Override
         public void onDeleteClick(CartModel cartModel, int pos) {
+            ArrayList<CartModel> cart = Stash.getArrayList(Constants.CART, CartModel.class);
+            int count = cart.get(pos).getCount();
+            count--;
+            if (count == 1){
+                cart.remove(pos);
+            } else {
+                cart.get(pos).setCount(count);
+            }
+            Stash.put(Constants.CART, cart);
 
+            binding.count.setText("Total# " + cart.size());
+            price = 0;
+            for (CartModel cc : cart) {
+                price += ( cc.getProductModel().getPrice() * cc.getCount() );
+            }
+            binding.price.setText("$" + String.format("%.2f", price));
+            adapter = new CartAdapter(requireContext(), cart, listner);
+            binding.recyler.setAdapter(adapter);
         }
     };
 
