@@ -27,7 +27,7 @@ public class InventoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityInventoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.header.title.setText("Add Product for listing");
+        binding.header.title.setText("Listed Products");
 
         Constants.initDialog(this);
         Constants.showDialog();

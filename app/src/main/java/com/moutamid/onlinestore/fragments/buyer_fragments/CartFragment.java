@@ -55,18 +55,7 @@ public class CartFragment extends Fragment {
     CartListner listner = new CartListner() {
         @Override
         public void onDeleteClick(CartModel cartModel, int pos) {
-            /*ArrayList<CartModel> cart = Stash.getArrayList(Constants.CART, CartModel.class);
-            Log.d("PPP", cart.size()+"");
-            cart.remove(cartModel);
-            binding.count.setText("Total# " + cart.size());
-            String p = binding.price.getText().toString().substring(1);
-            Log.d("PPP", cart.size()+"");
-            double pp = Double.parseDouble(p);
-            pp -= cartModel.getProductModel().getPrice();
-            binding.price.setText("$" + String.format("%.2f", pp));
-            Stash.put(Constants.CART, cart);
-            adapter = new CartAdapter(requireContext(), cart, listner);
-            binding.recyler.setAdapter(adapter);*/
+
         }
     };
 

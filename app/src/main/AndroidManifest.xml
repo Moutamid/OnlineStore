@@ -14,8 +14,15 @@
         android:theme="@style/Theme.OnlineStore"
         tools:targetApi="31">
         <activity
-            android:name=".activities.buyer_side.AllProductActivity"
+            android:name=".activities.seller_side.ProductUpdateActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.seller_side.ProductDetailSellerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.buyer_side.AllProductActivity"
+            android:exported="false"
+            android:theme="@style/Orange.Theme.OnlineStore" />
         <activity
             android:name=".activities.buyer_side.ProductDetailActivity"
             android:exported="false"

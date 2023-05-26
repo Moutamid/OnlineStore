@@ -109,6 +109,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Category
                     cart.add(cartModel);
                     Stash.put(Constants.CART, cart);
                     holder.isAdded = true;
+                    Toast.makeText(context, "Product added into cart", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(context, "Already Added into your cart", Toast.LENGTH_SHORT).show();
                 }

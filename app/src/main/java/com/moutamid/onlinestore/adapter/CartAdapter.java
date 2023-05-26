@@ -1,6 +1,7 @@
 package com.moutamid.onlinestore.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
 import com.moutamid.onlinestore.R;
+import com.moutamid.onlinestore.activities.buyer_side.ProductDetailActivity;
 import com.moutamid.onlinestore.constants.Constants;
 import com.moutamid.onlinestore.lister.CartListner;
 import com.moutamid.onlinestore.models.CartModel;
@@ -49,6 +51,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartVH> {
 
         holder.delete.setOnClickListener(v -> {
             listner.onDeleteClick(list.get(holder.getAbsoluteAdapterPosition()), holder.getAbsoluteAdapterPosition());
+        });
+
+        holder.itemView.setOnClickListener(v -> {
+            Stash.put(Constants.MODEL, model.getProductModel());
+            context.startActivity(new Intent(context, ProductDetailActivity.class));
         });
 
     }

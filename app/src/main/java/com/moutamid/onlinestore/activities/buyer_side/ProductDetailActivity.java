@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,9 @@ public class ProductDetailActivity extends AppCompatActivity {
     ActivityProductDetailBinding binding;
     ArrayList<String> images;
     double price = 0;
+    int count = 1;
+    boolean added = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +39,8 @@ public class ProductDetailActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         images = new ArrayList<>();
+
+        binding.count.setText("" + count);
 
         Constants.initDialog(this);
         Constants.showDialog();
@@ -44,6 +50,44 @@ public class ProductDetailActivity extends AppCompatActivity {
         binding.back.setOnClickListener(v -> {
             startActivity(new Intent(this, BuyerMainActivity.class));
             finish();
+        });
+
+        binding.add.setOnClickListener(v -> {
+            count++;
+            binding.count.setText("" + count);
+        });
+
+        binding.remove.setOnClickListener(v -> {
+            if (count > 1) {
+                count--;
+                binding.count.setText("" + count);
+            }
+        });
+
+        binding.checkout.setOnClickListener(v -> {
+            CartModel model1 = new CartModel(model.getID(), model, count);
+            ArrayList<CartModel> cart = Stash.getArrayList(Constants.CART, CartModel.class);
+            Constants.showDialog();
+            new Handler().postDelayed(() -> {
+                for (int i = 0; i < cart.size(); i++) {
+                    if (cart.get(i).getID().equals(model1.getID())) {
+                        int jj = cart.get(i).getCount();
+                        cart.get(i).setCount(jj + count);
+                        Stash.put(Constants.CART, cart);
+                        Snackbar.make(ProductDetailActivity.this, binding.root, "Product added into cart", Snackbar.LENGTH_SHORT).show();
+                        added = true;
+                        break;
+                    }
+                }
+                if (!added){
+                    cart.add(model1);
+                    Stash.put(Constants.CART, cart);
+                    added = true;
+                    Snackbar.make(ProductDetailActivity.this, binding.root, "Product added into cart", Snackbar.LENGTH_SHORT).show();
+                }
+
+                Constants.dismissDialog();
+            }, 1500);
         });
 
     }
@@ -64,15 +108,15 @@ public class ProductDetailActivity extends AppCompatActivity {
                         SliderAdapter adapter = new SliderAdapter(ProductDetailActivity.this, images);
                         binding.imageSlider.setSliderAdapter(adapter);
                         price = model.getPrice();
-                        binding.price.setText("$"+model.getPrice());
+                        binding.price.setText("$" + model.getPrice());
                         binding.name.setText(model.getName());
                         binding.cat.setText(model.getCategory());
-                        binding.stock.setText(""+model.getStock());
+                        binding.stock.setText("" + model.getStock());
                         binding.desc.setText(model.getDescription());
 
                         ArrayList<ProductModel> bookmarkModels = Stash.getArrayList(Constants.favrt, ProductModel.class);
 
-                        for (ProductModel fvrtModel : bookmarkModels){
+                        for (ProductModel fvrtModel : bookmarkModels) {
                             if (fvrtModel.getID().equals(model.getID())) {
                                 binding.fav.setImageResource(R.drawable.favorite);
                             }
