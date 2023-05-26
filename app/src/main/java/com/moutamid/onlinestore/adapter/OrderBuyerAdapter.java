@@ -29,7 +29,6 @@ public class OrderBuyerAdapter extends RecyclerView.Adapter<OrderBuyerAdapter.Ca
     Context context;
     ArrayList<BuyModel> list;
 
-
     public OrderBuyerAdapter(Context context, ArrayList<BuyModel> list) {
         this.context = context;
         this.list = list;
@@ -51,9 +50,15 @@ public class OrderBuyerAdapter extends RecyclerView.Adapter<OrderBuyerAdapter.Ca
         holder.price.setText("$" + model.getProduct().getPrice() + " x " + model.getProductCount());
         Glide.with(context).load(model.getProduct().getThumbnail()).into(holder.image);
 
+        if (model.getStatus().equals("PEN")) {
+            holder.status.setText("Pending");
+        } else {
+            holder.status.setText("Completed");
+        }
 
         if (model.getProduct().getUserID().equals(Constants.auth().getCurrentUser().getUid())){
             holder.itemView.setOnClickListener(v -> {
+                Stash.put(Constants.order, model);
                 context.startActivity(new Intent(context, OrderDetailActivity.class));
             });
         }
@@ -68,7 +73,7 @@ public class OrderBuyerAdapter extends RecyclerView.Adapter<OrderBuyerAdapter.Ca
     public class CartVH extends RecyclerView.ViewHolder {
 
         ImageView image;
-        TextView name, cat, price, date;
+        TextView name, cat, price, date, status;
 
         public CartVH(@NonNull View itemView) {
             super(itemView);
@@ -78,6 +83,7 @@ public class OrderBuyerAdapter extends RecyclerView.Adapter<OrderBuyerAdapter.Ca
             cat = itemView.findViewById(R.id.category);
             price = itemView.findViewById(R.id.price);
             date = itemView.findViewById(R.id.date);
+            status = itemView.findViewById(R.id.status);
 
         }
     }

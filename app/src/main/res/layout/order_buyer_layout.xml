@@ -9,9 +9,10 @@
     app:strokeWidth="0sp"
     app:cardBackgroundColor="@color/back">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -69,6 +70,49 @@
                     android:gravity="end|center"
                     android:text="$12.00 x 3" />
 
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8sp"
+            app:cardElevation="0sp"
+            android:layout_marginBottom="12sp"
+            android:layout_marginEnd="12sp"
+            android:layout_marginStart="12sp"
+            app:strokeWidth="0sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10sp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8sp"
+                    app:cardElevation="0sp"
+                    app:cardBackgroundColor="@color/grey"
+                    app:strokeWidth="0sp">
+
+                    <TextView
+                        android:id="@+id/status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:layout_weight="1"
+                        android:padding="10sp"
+                        android:textSize="14sp"
+                        android:textColor="@color/dark"
+                        android:gravity="end|center"
+                        android:text="Pending" />
+
+                </androidx.cardview.widget.CardView>
+
                 <TextView
                     android:id="@+id/date"
                     android:layout_width="match_parent"
@@ -82,8 +126,8 @@
 
             </LinearLayout>
 
-        </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

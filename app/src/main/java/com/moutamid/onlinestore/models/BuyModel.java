@@ -1,24 +1,26 @@
 package com.moutamid.onlinestore.models;
 
 public class BuyModel {
-    String ID, name, numb, address;
+    String ID, buyerID, name, numb, address;
     ProductModel product;
     int productCount;
-    String type;
+    String type, status;
     double finalPrice;
     long timeStamp;
 
     public BuyModel() {
     }
 
-    public BuyModel(String ID, String name, String numb, String address, ProductModel product, int productCount, String type, double finalPrice, long timeStamp) {
+    public BuyModel(String ID, String buyerID, String name, String numb, String address, ProductModel product, int productCount, String type, String status, double finalPrice, long timeStamp) {
         this.ID = ID;
+        this.buyerID = buyerID;
         this.name = name;
         this.numb = numb;
         this.address = address;
         this.product = product;
         this.productCount = productCount;
         this.type = type;
+        this.status = status;
         this.finalPrice = finalPrice;
         this.timeStamp = timeStamp;
     }
@@ -93,5 +95,21 @@ public class BuyModel {
 
     public void setTimeStamp(long timeStamp) {
         this.timeStamp = timeStamp;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getBuyerID() {
+        return buyerID;
+    }
+
+    public void setBuyerID(String buyerID) {
+        this.buyerID = buyerID;
     }
 }

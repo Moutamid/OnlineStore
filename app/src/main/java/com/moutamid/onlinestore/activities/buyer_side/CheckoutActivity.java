@@ -47,12 +47,12 @@ public class CheckoutActivity extends AppCompatActivity {
                 for (int i = 0; i < cart.size(); i++) {
                     String ID = UUID.randomUUID().toString();
                     BuyModel buyModel = new BuyModel (
-                            ID,
+                            ID, Constants.auth().getCurrentUser().getUid(),
                             binding.name.getEditText().getText().toString(),
                             binding.numb.getEditText().getText().toString(),
                             binding.address.getEditText().getText().toString(),
                             cart.get(i).getProductModel(), cart.get(i).getCount(),
-                            (binding.cod.isChecked() ? "COD" : "IAP"),
+                            (binding.cod.isChecked() ? "COD" : "IAP"), "PEN",
                             subTotal, new Date().getTime());
                     buyList.add(buyModel);
 

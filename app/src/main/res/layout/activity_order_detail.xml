@@ -383,6 +383,26 @@
                         android:textColor="@color/black"
                         android:fontFamily="@font/poppins" />
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Delivery Type"
+                        android:textSize="16sp"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins" />
+
+                    <TextView
+                        android:id="@+id/type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="COD"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:padding="8sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins" />
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
