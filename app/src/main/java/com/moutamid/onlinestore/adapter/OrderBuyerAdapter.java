@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
 import com.moutamid.onlinestore.R;
 import com.moutamid.onlinestore.activities.buyer_side.ProductDetailActivity;
+import com.moutamid.onlinestore.activities.seller_side.OrderDetailActivity;
 import com.moutamid.onlinestore.constants.Constants;
 import com.moutamid.onlinestore.lister.CartListner;
 import com.moutamid.onlinestore.models.BuyModel;
@@ -49,6 +50,13 @@ public class OrderBuyerAdapter extends RecyclerView.Adapter<OrderBuyerAdapter.Ca
         holder.date.setText(Constants.getFormatedDate(model.getTimeStamp()));
         holder.price.setText("$" + model.getProduct().getPrice() + " x " + model.getProductCount());
         Glide.with(context).load(model.getProduct().getThumbnail()).into(holder.image);
+
+
+        if (model.getProduct().getUserID().equals(Constants.auth().getCurrentUser().getUid())){
+            holder.itemView.setOnClickListener(v -> {
+                context.startActivity(new Intent(context, OrderDetailActivity.class));
+            });
+        }
 
     }
 
