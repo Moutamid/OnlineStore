@@ -40,7 +40,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class RatingFragment extends Fragment {
     FragmentRatingBinding binding;
     ArrayList<RatingModel> list;
-
     UserModel userModel;
 
     public RatingFragment() {
