@@ -108,7 +108,7 @@ public class ProductUpdateActivity extends AppCompatActivity {
     }
 
     private void upload(ProductModel model) {
-        uploadProduct(model.getID(), model.getThumbnail());
+        uploadProduct(model.getID(), model.getThumbnail(), model);
     }
 
     private void uploadData(ProductModel model) {
@@ -127,9 +127,9 @@ public class ProductUpdateActivity extends AppCompatActivity {
                             ArrayList<String> images = Stash.getArrayList(Constants.IMAGE_LIST, String.class);
                             if (finalCount == 0) {
                                 if (images.size() > 1) {
-                                    uploadProduct(ID, model.getThumbnail());
+                                    uploadProduct(ID, model.getThumbnail(), model);
                                 } else {
-                                    uploadProduct(ID, uri.toString());
+                                    uploadProduct(ID, uri.toString(), model);
                                 }
                             }
                             imagesToUpload.add(uri.toString());
@@ -168,14 +168,15 @@ public class ProductUpdateActivity extends AppCompatActivity {
         }
     }
 
-    private void uploadProduct(String id, String link) {
+    private void uploadProduct(String id, String link, ProductModel model) {
         ProductModel productModel = new ProductModel(
                 id, Constants.auth().getCurrentUser().getUid(),
                 binding.productName.getEditText().getText().toString(),
                 binding.productDesc.getEditText().getText().toString(),
                 binding.category.getEditText().getText().toString(),
                 link, Double.parseDouble(binding.price.getEditText().getText().toString()),
-                Long.parseLong(binding.stock.getEditText().getText().toString()), new Date().getTime()
+                Long.parseLong(binding.stock.getEditText().getText().toString()), new Date().getTime(),
+                model.getStar1(), model.getStar2(), model.getStar3(), model.getStar4(), model.getStar5(), model.getRatingCount()
         );
 
         Constants.databaseReference().child(Constants.Product).child(Constants.auth().getCurrentUser().getUid())

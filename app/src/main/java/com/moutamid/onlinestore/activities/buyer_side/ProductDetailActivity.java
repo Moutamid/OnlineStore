@@ -1,6 +1,10 @@
 package com.moutamid.onlinestore.activities.buyer_side;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,20 +14,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.moutamid.onlinestore.R;
 import com.moutamid.onlinestore.constants.Constants;
 import com.moutamid.onlinestore.databinding.ActivityProductDetailBinding;
+import com.moutamid.onlinestore.fragments.buyer_fragments.DescriptionFragment;
+import com.moutamid.onlinestore.fragments.buyer_fragments.RatingFragment;
 import com.moutamid.onlinestore.models.CartModel;
 import com.moutamid.onlinestore.models.ProductModel;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductDetailActivity extends AppCompatActivity {
     ActivityProductDetailBinding binding;
@@ -43,9 +50,11 @@ public class ProductDetailActivity extends AppCompatActivity {
         binding.count.setText("" + count);
 
         Constants.initDialog(this);
-        Constants.showDialog();
+       // Constants.showDialog();
         ProductModel model = (ProductModel) Stash.getObject(Constants.MODEL, ProductModel.class);
         showDate(model);
+        starUi(model);
+        setupViewPager();
 
         binding.back.setOnClickListener(v -> {
             startActivity(new Intent(this, BuyerMainActivity.class));
@@ -63,6 +72,8 @@ public class ProductDetailActivity extends AppCompatActivity {
                 binding.count.setText("" + count);
             }
         });
+
+        binding.ratingCount.setText("(" + model.getRatingCount() + ")");
 
         binding.checkout.setOnClickListener(v -> {
             CartModel model1 = new CartModel(model.getID(), model, count);
@@ -92,6 +103,53 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     }
 
+    private void starUi(ProductModel model) {
+        double average = 0;
+        try{
+            average = ((5 * model.getStar5()) + (4 * model.getStar4()) + (3 * model.getStar3()) + (2 * model.getStar2()) + model.getStar1())
+                    / (model.getStar1() + model.getStar2() + model.getStar3() + model.getStar4() + model.getStar5());
+        } catch (Exception e) {}
+
+
+        if (average >= 0.0) {
+            binding.star1.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_grey));
+            binding.star2.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_grey));
+            binding.star3.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_grey));
+            binding.star4.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_grey));
+            binding.star5.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_grey));
+        } else if (average >= 0.5 && average <= 1.5) {
+            binding.star1.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_yellow));
+            binding.star2.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_grey));
+            binding.star3.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_grey));
+            binding.star4.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_grey));
+            binding.star5.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_grey));
+        } else if (average >= 1.5 && average <= 2.5) {
+            binding.star1.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_yellow));
+            binding.star2.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_yellow));
+            binding.star3.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_grey));
+            binding.star4.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_grey));
+            binding.star5.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_grey));
+        } else if (average >= 2.5 && average <= 3.5) {
+            binding.star1.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_yellow));
+            binding.star2.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_yellow));
+            binding.star3.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_yellow));
+            binding.star4.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_grey));
+            binding.star5.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_grey));
+        } else if (average >= 3.5 && average <= 4) {
+            binding.star1.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_yellow));
+            binding.star2.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_yellow));
+            binding.star3.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_yellow));
+            binding.star4.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_yellow));
+            binding.star5.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_grey));
+        } else if (average >= 4) {
+            binding.star1.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_yellow));
+            binding.star2.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_yellow));
+            binding.star3.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_yellow));
+            binding.star4.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_yellow));
+            binding.star5.setImageDrawable(getResources().getDrawable(R.drawable.star_rate_yellow));
+        }
+    }
+
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, BuyerMainActivity.class));
@@ -112,7 +170,6 @@ public class ProductDetailActivity extends AppCompatActivity {
                         binding.name.setText(model.getName());
                         binding.cat.setText(model.getCategory());
                         binding.stock.setText("" + model.getStock());
-                        binding.desc.setText(model.getDescription());
 
                         ArrayList<ProductModel> bookmarkModels = Stash.getArrayList(Constants.favrt, ProductModel.class);
 
@@ -171,6 +228,49 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+    private void setupViewPager() {
+        ViewPager viewPager = findViewById(R.id.viewPager);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(
+                getSupportFragmentManager());
+
+        adapter.addFragment(new DescriptionFragment(), "Description");
+        adapter.addFragment(new RatingFragment(), "Rating");
+
+        viewPager.setAdapter(adapter);
+
+        TabLayout tabLayout = findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+    static class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int arg0) {
+            return this.mFragmentList.get(arg0);
+        }
+
+        @Override
+        public int getCount() {
+            return this.mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            this.mFragmentList.add(fragment);
+            this.mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return this.mFragmentTitleList.get(position);
+        }
     }
 
 

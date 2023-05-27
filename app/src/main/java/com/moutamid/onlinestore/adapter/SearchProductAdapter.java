@@ -51,6 +51,52 @@ public class SearchProductAdapter extends RecyclerView.Adapter<SearchProductAdap
         ArrayList<ProductModel> bookmarkModels = Stash.getArrayList(Constants.favrt, ProductModel.class);
         ArrayList<CartModel> carttt = Stash.getArrayList(Constants.CART, CartModel.class);
 
+        holder.ratingCount.setText("(" + model.getRatingCount() + ")");
+
+        double average = 0;
+        try{
+            average = ((5 * model.getStar5()) + (4 * model.getStar4()) + (3 * model.getStar3()) + (2 * model.getStar2()) + model.getStar1())
+                    / (model.getStar1() + model.getStar2() + model.getStar3() + model.getStar4() + model.getStar5());
+        } catch (Exception e) {}
+
+        if (average >= 0.0) {
+            holder.star1.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_grey));
+            holder.star2.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_grey));
+            holder.star3.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_grey));
+            holder.star4.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_grey));
+            holder.star5.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_grey));
+        } else if (average >= 0.5 && average <= 1.5) {
+            holder.star1.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_yellow));
+            holder.star2.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_grey));
+            holder.star3.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_grey));
+            holder.star4.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_grey));
+            holder.star5.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_grey));
+        }  else if (average >= 1.5 && average <= 2.5) {
+            holder.star1.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_yellow));
+            holder.star2.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_yellow));
+            holder.star3.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_grey));
+            holder.star4.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_grey));
+            holder.star5.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_grey));
+        } else if (average >= 2.5 && average <= 3.5) {
+            holder.star1.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_yellow));
+            holder.star2.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_yellow));
+            holder.star3.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_yellow));
+            holder.star4.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_grey));
+            holder.star5.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_grey));
+        } else if (average >= 3.5 && average <= 4) {
+            holder.star1.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_yellow));
+            holder.star2.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_yellow));
+            holder.star3.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_yellow));
+            holder.star4.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_yellow));
+            holder.star5.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_grey));
+        } else if (average >= 4) {
+            holder.star1.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_yellow));
+            holder.star2.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_yellow));
+            holder.star3.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_yellow));
+            holder.star4.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_yellow));
+            holder.star5.setImageDrawable(context.getResources().getDrawable(R.drawable.star_rate_yellow));
+        }
+
 
         for (ProductModel fvrtModel : bookmarkModels){
             if (fvrtModel.getID().equals(model.getID())){
@@ -116,8 +162,8 @@ public class SearchProductAdapter extends RecyclerView.Adapter<SearchProductAdap
     }
 
     public class CategoryVH extends RecyclerView.ViewHolder{
-        ImageView imageView;
-        TextView name, price;
+        ImageView imageView, star1, star2, star3, star4, star5;
+        TextView name, price, ratingCount;
         Button add;
         ImageButton fav;
         boolean isFavrt, isAdded;
@@ -128,6 +174,12 @@ public class SearchProductAdapter extends RecyclerView.Adapter<SearchProductAdap
             price = itemView.findViewById(R.id.price);
             fav = itemView.findViewById(R.id.fav);
             add = itemView.findViewById(R.id.add);
+            ratingCount = itemView.findViewById(R.id.ratingCount);
+            star1 = itemView.findViewById(R.id.star1);
+            star2 = itemView.findViewById(R.id.star2);
+            star3 = itemView.findViewById(R.id.star3);
+            star4 = itemView.findViewById(R.id.star4);
+            star5 = itemView.findViewById(R.id.star5);
 
             isFavrt = false;
             isAdded = false;

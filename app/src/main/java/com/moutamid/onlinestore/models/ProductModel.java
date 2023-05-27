@@ -8,10 +8,12 @@ public class ProductModel {
     double price;
     long stock, timeStamp;
     ArrayList<String> imagesList;
+    long star1,star2,star3,star4,star5, ratingCount;
+
     public ProductModel() {
     }
 
-    public ProductModel(String ID, String userID, String name, String description, String category, String thumbnail, double price, long stock, long timeStamp) {
+    public ProductModel(String ID, String userID, String name, String description, String category, String thumbnail, double price, long stock, long timeStamp, long star1, long star2, long star3, long star4, long star5, long ratingCount) {
         this.ID = ID;
         this.userID = userID;
         this.name = name;
@@ -21,6 +23,12 @@ public class ProductModel {
         this.price = price;
         this.stock = stock;
         this.timeStamp = timeStamp;
+        this.star1 = star1;
+        this.star2 = star2;
+        this.star3 = star3;
+        this.star4 = star4;
+        this.star5 = star5;
+        this.ratingCount = ratingCount;
     }
 
     public ProductModel(String ID, String userID, String name, String description, String category, String thumbnail, double price, long stock, long timeStamp, ArrayList<String> imagesList) {
@@ -114,5 +122,53 @@ public class ProductModel {
 
     public void setImagesList(ArrayList<String> imagesList) {
         this.imagesList = imagesList;
+    }
+
+    public long getStar1() {
+        return star1;
+    }
+
+    public void setStar1(long star1) {
+        this.star1 = star1;
+    }
+
+    public long getStar2() {
+        return star2;
+    }
+
+    public void setStar2(long star2) {
+        this.star2 = star2;
+    }
+
+    public long getStar3() {
+        return star3;
+    }
+
+    public void setStar3(long star3) {
+        this.star3 = star3;
+    }
+
+    public long getStar4() {
+        return star4;
+    }
+
+    public void setStar4(long star4) {
+        this.star4 = star4;
+    }
+
+    public long getStar5() {
+        return star5;
+    }
+
+    public void setStar5(long star5) {
+        this.star5 = star5;
+    }
+
+    public long getRatingCount() {
+        return ratingCount;
+    }
+
+    public void setRatingCount(long ratingCount) {
+        this.ratingCount = ratingCount;
     }
 }

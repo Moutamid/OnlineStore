@@ -33,6 +33,7 @@ public class Constants {
     static Dialog dialog;
     public static final String User = "users";
     public static final String buy = "buy";
+    public static final String Rating = "rating";
     public static final String order = "order";
     public static final String ProductImages = "product_images";
     public static final String Product = "product";

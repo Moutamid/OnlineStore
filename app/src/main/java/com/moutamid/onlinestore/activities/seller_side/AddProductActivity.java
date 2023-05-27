@@ -136,7 +136,7 @@ public class AddProductActivity extends AppCompatActivity {
                 binding.productDesc.getEditText().getText().toString(),
                 binding.category.getEditText().getText().toString(),
                 link, Double.parseDouble(binding.price.getEditText().getText().toString()),
-                Long.parseLong(binding.stock.getEditText().getText().toString()), new Date().getTime()
+                Long.parseLong(binding.stock.getEditText().getText().toString()), new Date().getTime(), 0,0,0,0,0, 0
         );
 
         Constants.databaseReference().child(Constants.Product).child(Constants.auth().getCurrentUser().getUid())
