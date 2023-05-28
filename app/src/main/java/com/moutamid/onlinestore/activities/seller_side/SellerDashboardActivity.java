@@ -91,24 +91,30 @@ public class SellerDashboardActivity extends AppCompatActivity {
 
     private void getSoldCount() {
         Constants.databaseReference().child(Constants.buy).child("seller").child(Constants.auth().getCurrentUser().getUid())
-                .get().addOnSuccessListener(dataSnapshot -> {
-                    if (dataSnapshot.exists()){
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                            BuyModel model = snapshot.getValue(BuyModel.class);
-                            buyList.add(model);
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()){
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                                BuyModel model = snapshot.getValue(BuyModel.class);
+                                buyList.add(model);
+                            }
+
+                            binding.ordersCount.setText(""+buyList.size());
+
+                        }  else {
+                            binding.ordersCount.setText(""+0);
                         }
-
-                        binding.ordersCount.setText(""+buyList.size());
-
-                    }  else {
-                        binding.ordersCount.setText(""+0);
+                        Constants.dismissDialog();
+                        OrderBuyerAdapter adapter = new OrderBuyerAdapter(SellerDashboardActivity.this, buyList);
+                        binding.recyler.setAdapter(adapter);
                     }
-                    Constants.dismissDialog();
-                    OrderBuyerAdapter adapter = new OrderBuyerAdapter(SellerDashboardActivity.this, buyList);
-                    binding.recyler.setAdapter(adapter);
-                }).addOnFailureListener(e -> {
-                    Constants.dismissDialog();
-                    Snackbar.make(SellerDashboardActivity.this, binding.root, e.getMessage(), Snackbar.LENGTH_SHORT).show();
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError e) {
+                        Constants.dismissDialog();
+                        Snackbar.make(SellerDashboardActivity.this, binding.root, e.getMessage(), Snackbar.LENGTH_SHORT).show();
+                    }
                 });
     }
 
