@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Constants.checkApp(this);
+      //  Constants.checkApp(this);
 
         binding.seller.setOnClickListener(v -> {
             startActivity(new Intent(this, LoginActivity.class));

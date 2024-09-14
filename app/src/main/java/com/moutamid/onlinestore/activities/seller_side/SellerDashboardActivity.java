@@ -31,7 +31,7 @@ public class SellerDashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySellerDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Constants.checkApp(this);
+        // Constants.checkApp(this);
         Constants.initDialog(this);
         Constants.showDialog();
 

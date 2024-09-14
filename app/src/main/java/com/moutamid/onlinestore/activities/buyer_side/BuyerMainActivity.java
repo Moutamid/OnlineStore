@@ -24,7 +24,7 @@ public class BuyerMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityBuyerMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Constants.checkApp(this);
+        //Constants.checkApp(this);
 
         binding.bottomNav.setItemActiveIndicatorColor(ColorStateList.valueOf(getResources().getColor(R.color.white)));
         binding.bottomNav.setItemActiveIndicatorShapeAppearance(new ShapeAppearanceModel().withCornerSize(50).toBuilder().build());
