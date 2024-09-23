@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/poppins"
+            android:text="moutamid567@gmail.com"
             android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -38,6 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/poppins"
+            android:text="12345678"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
